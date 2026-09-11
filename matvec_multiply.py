@@ -2,7 +2,7 @@ import random
 
 # create a function to compute the dot product of two vectors using a for loop
 # add comments for the selected function
-
+print("Hello")
 
 
 # create a function to compute the matrix-vector product using the dot_product function
