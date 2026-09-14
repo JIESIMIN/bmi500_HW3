@@ -16,7 +16,6 @@ def check_vector(v, name):
 
 
 # create a function to compute the dot product of two vectors using a for loop
-# add comments for the selected function
 def dot_product(a, b, check=True):
     # Validate inputs; matvec_multiply passes check=False after validating once
     if check:
@@ -37,7 +36,6 @@ def dot_product(a, b, check=True):
 
 
 # create a function to compute the matrix-vector product using the dot_product function
-# add comments for the selected function
 def matvec_multiply(A, x):
     # Validate A (list of rows) and x once, so dot_product can skip re-checking x per row
     if not isinstance(A, (list, tuple)) or len(A) == 0:
@@ -53,7 +51,6 @@ def matvec_multiply(A, x):
 
 
 # create a main function to test the matrix-vector product function using randomly generated data of size 1000x1000
-# add comments for the selected function
 def main():
     # Random 1000x1000 matrix and length-1000 vector
     n = 1000
