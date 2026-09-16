@@ -1,0 +1,8 @@
+Manual code review in-class
+
+Overall, this is a solid implementation for completing the dot production of two vectors and computing the matrix-vector product. 
+There are a lot of fallbacks and sanity checks, like the input must be a real number, must be a list/tuple, and must be finite.
+
+However, there are still some areas for improvement. Docstring on the public function can be added for clarity, and the left-over comments can be deleted.
+The current implementation also rejects an empty matrix arbitrarily. matvec_multiply([], []) raises a ValueError, but dot_product([], []) returns 0. Consider dropping len(A) == 0 because the matrix multiplication should be allowed to return an empty result.
+There's currently a separate def check_vector(v, name) function that serves as sanity checks. Consider incorporating it within the existing functions so no additional function is needed beyond what's required. 

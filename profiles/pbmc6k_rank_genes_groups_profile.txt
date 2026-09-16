@@ -1,0 +1,60 @@
+Tue Sep 15 15:44:58 2026    profiles/pbmc6k_rank_genes_groups.prof
+
+         80020 function calls (78229 primitive calls) in 2.674 seconds
+
+   Ordered by: internal time
+   List reduced from 1031 to 50 due to restriction <50>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        8    2.024    0.253    2.024    0.253 algorithms.py:1067(rank)
+      108    0.140    0.001    0.141    0.001 take.py:120(_take_nd_ndarray)
+       14    0.125    0.009    0.125    0.009 {built-in method scipy.sparse._sparsetools.csr_column_index2}
+        8    0.100    0.012    0.100    0.012 {built-in method scipy.sparse._sparsetools.csr_todense}
+        1    0.045    0.045    0.046    0.046 __init__.py:781(_check_nonnegative_integers_in_mem)
+      693    0.042    0.000    0.042    0.000 {method 'reduce' of 'numpy.ufunc' objects}
+       14    0.022    0.002    0.022    0.002 _utils.py:47(sparse_mean_variance_axis)
+        9    0.020    0.002    2.154    0.239 _rank_genes_groups.py:45(_ranks)
+       14    0.020    0.001    0.020    0.001 {built-in method scipy.sparse._sparsetools.csr_column_index1}
+       62    0.019    0.000    0.019    0.000 missing.py:261(_isna_array)
+       35    0.012    0.000    0.012    0.000 {method 'argsort' of 'numpy.ndarray' objects}
+      316    0.006    0.000    0.006    0.000 base.py:650(_simple_new)
+        8    0.005    0.001    0.005    0.001 {built-in method scipy.sparse._sparsetools.get_csr_submatrix}
+       56    0.005    0.000    0.079    0.001 frame.py:11462(_reduce)
+        8    0.003    0.000    2.566    0.321 _rank_genes_groups.py:277(wilcoxon)
+       99    0.003    0.000    0.003    0.000 {built-in method posix.stat}
+       23    0.003    0.000    0.003    0.000 {built-in method _io.open_code}
+12783/12753    0.002    0.000    0.004    0.000 {built-in method builtins.isinstance}
+        1    0.002    0.002    0.002    0.002 {built-in method scipy.sparse._sparsetools.csr_eliminate_zeros}
+      632    0.002    0.000    0.002    0.000 {built-in method __new__ of type object at 0x147436976fe0}
+       23    0.001    0.000    0.001    0.000 {method '__exit__' of '_io._IOBase' objects}
+      186    0.001    0.000    0.002    0.000 base.py:5385(__getitem__)
+        1    0.001    0.001    2.612    2.612 _rank_genes_groups.py:398(compute_statistics)
+       35    0.001    0.000    0.002    0.000 multi.py:1194(_engine)
+       35    0.001    0.000    0.001    0.000 {built-in method numpy.zeros}
+       23    0.001    0.000    0.001    0.000 {built-in method marshal.loads}
+5783/4587    0.001    0.000    0.001    0.000 {built-in method builtins.len}
+       56    0.001    0.000    0.023    0.000 nanops.py:1499(_maybe_null_out)
+       70    0.001    0.000    0.005    0.000 base.py:475(__new__)
+        7    0.001    0.000    0.001    0.000 _continuous_distns.py:370(_norm_cdf)
+      223    0.001    0.000    0.001    0.000 generic.py:6258(__finalize__)
+      118    0.001    0.000    0.004    0.000 construction.py:517(sanitize_array)
+       63    0.001    0.000    0.001    0.000 utils.py:239(maybe_convert_indices)
+      120    0.001    0.000    0.001    0.000 {method 'nonzero' of 'numpy.ndarray' objects}
+      151    0.001    0.000    0.001    0.000 {method 'copy' of 'numpy.ndarray' objects}
+      237    0.001    0.000    0.001    0.000 generic.py:281(__init__)
+       78    0.001    0.000    0.001    0.000 function_base.py:5369(insert)
+     2332    0.001    0.000    0.001    0.000 generic.py:42(_instancecheck)
+  155/154    0.001    0.000    0.162    0.001 indexing.py:1177(__getitem__)
+       82    0.001    0.000    0.002    0.000 multi.py:3001(get_loc)
+       56    0.001    0.000    0.001    0.000 cast.py:123(maybe_convert_platform)
+      433    0.001    0.000    0.001    0.000 {built-in method numpy.empty}
+       83    0.001    0.000    0.001    0.000 {method 'take' of 'numpy.ndarray' objects}
+     2332    0.001    0.000    0.001    0.000 generic.py:37(_check)
+       56    0.001    0.000    0.001    0.000 range.py:1148(take)
+        7    0.001    0.000    0.002    0.000 _distn_infrastructure.py:2216(sf)
+       64    0.001    0.000    0.144    0.002 managers.py:642(reindex_indexer)
+        7    0.001    0.000    0.007    0.001 multitest.py:99(multipletests)
+     3370    0.001    0.000    0.001    0.000 {built-in method builtins.getattr}
+       83    0.001    0.000    0.001    0.000 cast.py:1166(maybe_infer_to_datetimelike)
+
+

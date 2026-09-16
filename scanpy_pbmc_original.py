@@ -3,24 +3,9 @@
 from typing_extensions import ParamSpecArgs
 import numpy as np
 import pandas as pd
-# import tqdm
-# tqdm.tqdm.monitor_interval = 0
 import scanpy as sc
 
 import time
-
-_t_start = _t_last = time.time()
-_timings = []
-
-def lap(name):
-    """Record wall time since the previous lap() call."""
-    global _t_last
-    now = time.time()
-    dt = now - _t_last
-    _timings.append((name, dt))
-    print(f"[timing] {name:26s} {dt:8.3f} s", flush=True)
-    _t_last = now
-
 import sys
 import argparse
 
@@ -47,7 +32,6 @@ dataset = args.data_set
 outdir = args.out_dir if args.out_dir.endswith('/') else args.out_dir + '/'
 nthreads = args.num_threads
 
-lap("startup_argparse")
 
 #%%
 
@@ -62,7 +46,6 @@ adata = sc.read_10x_mtx(
 
 adata.var_names_make_unique()  # this is unnecessary if using `var_names='gene_ids'` in `sc.read_10x_mtx`
 
-lap("read_10x_mtx")
 
 # %%
 # preprocessing
@@ -70,8 +53,6 @@ lap("read_10x_mtx")
 # basic filtering
 sc.pp.filter_cells(adata, min_genes=200)
 sc.pp.filter_genes(adata, min_cells=3)
-
-lap("filter_cells_genes")
 
 #%%
 # metric
@@ -87,7 +68,6 @@ lap("filter_cells_genes")
 sc.pp.normalize_total(adata, target_sum=1e4)
 sc.pp.log1p(adata)
 
-lap("normalize_log1p")
 
 # %%
 # highly variable genes
@@ -101,14 +81,11 @@ adata.raw = adata
 # filtering by highly variable genes.
 adata = adata[:, adata.var.highly_variable]
 
-lap("highly_variable_genes")
 
 #%%
 # regres out effects of total counts per cell an d% mitochondrial genes
 #sc.pp.regress_out(adata, ['total_counts', 'pct_counts_mt'])
 sc.pp.scale(adata)
-
-lap("scale")
 
 # %%
 # report adata - so we can check ot see if we are comparable to Seurat
@@ -122,13 +99,9 @@ sc.tl.pca(adata, svd_solver='arpack', n_comps=30)
 # adata.write(results_file)
 # adata
 
-lap("pca")
-
 # %%
 # neighborhood graph
 sc.pp.neighbors(adata, n_pcs=30)
-
-lap("neighbors")
 
 # %% 
 # for fixing disconnected clusters or connectivity issues:
@@ -146,66 +119,18 @@ lap("neighbors")
 #sc.tl.leiden(adata)
 sc.tl.louvain(adata, resolution = 0.5)
 
-lap("louvain")
 
 #%%
 # umap
 sc.tl.umap(adata, n_components=30)
 
-lap("umap")
-
 #%%
 adata.write(results_file)
 adata
 
-lap("write_h5ad")
-
 # %%
 # support t-test, wilcoxon, logistic regression
 # find marker genes
-import cProfile
-import pstats
+sc.tl.rank_genes_groups(adata, 'louvain', method='wilcoxon', use_raw=True)
 
-#sc.tl.rank_genes_groups(adata, 'louvain', method='wilcoxon', use_raw=True)
 
-import os
-os.makedirs('profiles', exist_ok=True)
-
-# per-dataset filenames 
-prof_bin = f'profiles/{dataset}_rank_genes_groups.prof'
-prof_txt = f'profiles/{dataset}_rank_genes_groups_profile.txt'
-
-cProfile.run(
-    "sc.tl.rank_genes_groups(adata, 'louvain', method='wilcoxon', use_raw=True)",
-    filename=prof_bin
-)
-
-# full readable report -> text file
-with open(prof_txt, 'w') as fh:
-    pstats.Stats(prof_bin, stream=fh) \
-          .strip_dirs().sort_stats('tottime').print_stats(50)
-
-# short version -> console
-pstats.Stats(prof_bin) \
-      .strip_dirs().sort_stats('tottime').print_stats(10)
-
-lap("rank_genes_groups")
-
-# %%
-# Summary for instrumental profiling
-total = time.time() - _t_start
-
-lines = ["=== Timing summary per section ===",
-         f"{'Function':26s} {'Time':>10s}  {'Percentage of total time':>24s}",
-         "-" * 64]
-lines += [f"{name:26s} {dt:8.3f} s  ({100*dt/total:5.1f}%)" for name, dt in _timings]
-lines.append(f"{'TOTAL':26s} {total:8.3f} s")
-
-print("\n" + "\n".join(lines))
-
-# saved alongside the coarse-grained and cProfile reports, so the instrumented
-# numbers can be re-used later without re-running the pipeline
-inst_txt = f'profiles/{dataset}_instrumented_time.txt'
-with open(inst_txt, 'w') as fh:
-    fh.write("\n".join(lines) + "\n")
-print(f"[profile] wrote {inst_txt}")

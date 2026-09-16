@@ -1,6 +1,6 @@
 Coding assistant: CODEX (GPT-6 Astra)
 
-Prompt: Perform a code review of [matvec\\_multiply.py](matvec_multiply.py), focusing on the implementation of the functions.
+Prompt: Perform a code review of [matvec\\_multiply.py](matvec_multiply.py), focusing on the implementation of the functions and correctness.
 
 Response:
 The implementation is clear, and all 14 existing tests pass. I found two correctness issues in the numeric types the functions accept:

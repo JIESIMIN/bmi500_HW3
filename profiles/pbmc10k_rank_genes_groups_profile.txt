@@ -1,0 +1,60 @@
+Tue Sep 15 15:40:19 2026    profiles/pbmc10k_rank_genes_groups.prof
+
+         323722 function calls (317915 primitive calls) in 11.051 seconds
+
+   Ordered by: internal time
+   List reduced from 1031 to 50 due to restriction <50>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+       24    7.013    0.292    7.015    0.292 algorithms.py:1067(rank)
+       32    1.566    0.049    1.566    0.049 {built-in method scipy.sparse._sparsetools.csr_column_index2}
+      481    0.695    0.001    0.700    0.001 take.py:120(_take_nd_ndarray)
+       24    0.298    0.012    0.298    0.012 {built-in method scipy.sparse._sparsetools.csr_todense}
+       32    0.294    0.009    0.294    0.009 _utils.py:47(sparse_mean_variance_axis)
+       32    0.277    0.009    0.277    0.009 {built-in method scipy.sparse._sparsetools.csr_column_index1}
+        1    0.250    0.250    0.251    0.251 __init__.py:781(_check_nonnegative_integers_in_mem)
+     3834    0.129    0.000    0.129    0.000 {method 'reduce' of 'numpy.ufunc' objects}
+       25    0.060    0.002    7.416    0.297 _rank_genes_groups.py:45(_ranks)
+      390    0.053    0.000    0.053    0.000 missing.py:261(_isna_array)
+       71    0.046    0.001    0.046    0.001 {method 'argsort' of 'numpy.ndarray' objects}
+       24    0.031    0.001    0.031    0.001 {built-in method scipy.sparse._sparsetools.get_csr_submatrix}
+      384    0.017    0.000    0.271    0.001 frame.py:11462(_reduce)
+        1    0.014    0.014    0.014    0.014 {built-in method scipy.sparse._sparsetools.csr_eliminate_zeros}
+       17    0.011    0.001   10.656    0.627 _rank_genes_groups.py:277(wilcoxon)
+56580/56541    0.011    0.000    0.018    0.000 {built-in method builtins.isinstance}
+        1    0.009    0.009    2.164    2.164 _rank_genes_groups.py:174(_basic_stats)
+     2592    0.006    0.000    0.006    0.000 {built-in method __new__ of type object at 0x1552446f3fe0}
+      384    0.005    0.000    0.074    0.000 nanops.py:1499(_maybe_null_out)
+      407    0.005    0.000    0.027    0.000 base.py:475(__new__)
+      520    0.005    0.000    0.005    0.000 {method 'nonzero' of 'numpy.ndarray' objects}
+       99    0.004    0.000    0.004    0.000 {built-in method posix.stat}
+      676    0.004    0.000    0.005    0.000 base.py:5385(__getitem__)
+20941/15792    0.004    0.000    0.006    0.000 {built-in method builtins.len}
+     1268    0.004    0.000    0.005    0.000 generic.py:6258(__finalize__)
+      391    0.004    0.000    0.006    0.000 utils.py:239(maybe_convert_indices)
+       16    0.004    0.000    0.004    0.000 _continuous_distns.py:370(_norm_cdf)
+      500    0.004    0.000    0.018    0.000 construction.py:517(sanitize_array)
+        1    0.004    0.004   10.756   10.756 _rank_genes_groups.py:398(compute_statistics)
+      384    0.003    0.000    0.007    0.000 cast.py:123(maybe_convert_platform)
+     1968    0.003    0.000    0.003    0.000 {built-in method numpy.empty}
+       23    0.003    0.000    0.003    0.000 {built-in method _io.open_code}
+     1298    0.003    0.000    0.004    0.000 generic.py:281(__init__)
+    11613    0.003    0.000    0.007    0.000 generic.py:42(_instancecheck)
+      384    0.003    0.000    0.008    0.000 range.py:1148(take)
+  856/855    0.003    0.000    0.799    0.001 indexing.py:1177(__getitem__)
+      392    0.003    0.000    0.712    0.002 managers.py:642(reindex_indexer)
+       80    0.003    0.000    0.005    0.000 multi.py:1194(_engine)
+    11613    0.003    0.000    0.004    0.000 generic.py:37(_check)
+       23    0.003    0.000    0.003    0.000 {method '__exit__' of '_io._IOBase' objects}
+      852    0.003    0.000    0.003    0.000 {method 'copy' of 'numpy.ndarray' objects}
+      200    0.003    0.000    0.003    0.000 {built-in method builtins.max}
+      401    0.003    0.000    0.003    0.000 cast.py:550(maybe_promote)
+      853    0.002    0.000    0.774    0.001 indexing.py:1720(_getitem_axis)
+     1170    0.002    0.000    0.003    0.000 base.py:650(_simple_new)
+       23    0.002    0.000    0.002    0.000 {method 'read' of '_io.BufferedReader' objects}
+       78    0.002    0.000    0.002    0.000 {built-in method numpy.zeros}
+      429    0.002    0.000    0.003    0.000 cast.py:1166(maybe_infer_to_datetimelike)
+        5    0.002    0.000    0.008    0.002 records.py:588(fromarrays)
+      384    0.002    0.000    0.274    0.001 generic.py:12524(_min_count_stat_function)
+
+
