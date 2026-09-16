@@ -1,4 +1,5 @@
 Manual code review in-class
+Partner: Zhu Xu
 
 Overall, this is a solid implementation for completing the dot production of two vectors and computing the matrix-vector product. 
 There are a lot of fallbacks and sanity checks, like the input must be a real number, must be a list/tuple, and must be finite.
